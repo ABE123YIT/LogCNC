@@ -16,14 +16,16 @@ public class LogCncApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LogCncApplication.class, args);
-//		Integer length = args.length;
-		String filePath = "C:\\Users\\Amine\\Desktop\\comscore.csv";
-		String pathCsv = "C:\\Users\\Amine\\Desktop\\comscore_minimise.csv";
-		ILogCNCService service = new LogCNCService();
-		try {
-			service.execute(filePath, pathCsv);
-		} catch (Exception e) {
-			logger.log(Level.WARNING, e.getMessage(), e);
+		Integer length = args.length;
+		if(length > 1){
+			String filePath = args[0];
+			String pathCsv = args[1];
+			ILogCNCService service = new LogCNCService();
+			try {
+				service.execute(filePath, pathCsv);
+			} catch (Exception e) {
+				logger.log(Level.WARNING, e.getMessage(), e);
+			}
 		}
 	}
 }

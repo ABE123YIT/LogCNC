@@ -20,6 +20,8 @@ import com.ymagis.logcnc.model.LogCNCBean;
 public class LogCNCService implements ILogCNCService {
 
 	private static Logger logger = Logger.getLogger(LogCNCService.class.getName());
+	
+	private static String HEADER = "id; rel_devices_screen_id; cpl_id; cpl_content_title; cpl_content_kind; cpl_duration_s; start_datetime; stop_datetime; duration_s; created; modified; theater_id; theater_code; country; screen_id; show_id; title";
 
 	public void execute(String filePath, String pathCsv) throws Exception {
 		try {
@@ -119,7 +121,7 @@ public class LogCNCService implements ILogCNCService {
 			BufferedWriter bw = null;
 			bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csvFile), "UTF-8"));
 			// bw = new BufferedWriter(new FileWriter(csvFile));
-			bw.write(Utils.HEADER);
+			bw.write(HEADER);
 			bw.newLine();
 			for (LogCNCBean elt : list) {
 				bw.write(elt.toString());
